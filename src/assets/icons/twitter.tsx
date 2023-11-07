@@ -11,4 +11,4 @@ const SvgComponent = (props: any) => (
 
 const Memo = memo(SvgComponent);
 
-export { Memo as TempIcon };
+export { Memo as TwitterIcon };
