@@ -11,6 +11,8 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.6",
     "@tanstack/react-query-devtools": "^5.4.3",
+    "axios": "^1.6.0",
+    "clsx": "^2.0.0",
     "jose": "^5.1.0",
     "next": "14.0.1",
     "react": "^18",
