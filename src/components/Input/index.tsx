@@ -1,43 +1,9 @@
-// import {forwardRef} from 'react'
-
-// const Input = forwardRef<HTMLInputElement, any>(function InputElement(
-//   {
-//     title,
-//     icon,
-//     width,
-//     ...rest
-//   }: {
-//     title: string
-//     icon: any
-//     width: string
-//     [key: string]: any
-//   },
-//   ref,
-// ) {
-//   return (
-//     <div className='h-10'>
-//          <input
-//         ref={ref}
-//         type="text"
-//         className={
-
-//           ' shadow-md hover:shadow-lg transition duration-300 h-full'
-//         }
-//         placeholder={title}
-//         {...rest}
-//       />
-//       <div className='border-r-8 border-black'/>
-
-//     </div>
-//   )
-// })
-
-// export default Input
 "use client";
 import React, { useState } from "react";
 import { BiTargetLock } from "react-icons/bi";
+import { Input, Button } from "@nextui-org/react";
 
-export default function Input({ width }: any) {
+export default function InputComponent({ placeHolder }: any) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [value, setValue] = useState(new Date());
   const onChange = (temp: any) => {
@@ -47,15 +13,29 @@ export default function Input({ width }: any) {
 
   return (
     <>
-      <div className="flex flex-row">
-        <input
-          className={
-            "bg-white pl-5 focus:outline-none font-semibold w-full"
+      <div className="flex flex-row w-full">
+        <Input
+        placeholder={placeHolder}
+          classNames={{
+            inputWrapper: [
+              "bg-white",
+              "dark:bg-default/60",
+              "focus:bg-white",
+              "hover:bg-white",
+              "dark:hover:bg-default/70",
+              "!cursor-text",
+            ],
+          }}
+          size="sm"
+          endContent={
+            <Button style={{ backgroundColor: "white" }}>
+              <div className="flex flex-row gap-4">
+                <div className="border-l-2"/>
+                <BiTargetLock className="h-full w-10 text-[#ed5505]" />
+              </div>
+            </Button>
           }
         />
-        <button onClick={() => {}}>
-          <div className="border-l-[1px] border-black w-10 bg-white  "><BiTargetLock className="h-full w-full text-[#ed5505]"/></div>
-        </button>
       </div>
 
       {showModal && <div className="w-60 h-10 absolute"></div>}

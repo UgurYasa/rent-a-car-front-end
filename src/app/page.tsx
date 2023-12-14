@@ -7,35 +7,44 @@ import Header from "@/components/Header";
 import Kvkk from "@/components/Kvkk";
 
 export default function Home() {
+  const list = [
+    {
+      imageUrl: "'/assets/card-background.jpeg'",
+      buttonText: "Detaylı Bilgi >",
+    },
+    {
+      imageUrl: "'/assets/card-background.jpeg'",
+      buttonText: "Detaylı Bilgi >",
+    },
+    {
+      imageUrl: "'/assets/card-background.jpeg'",
+      buttonText: "Detaylı Bilgi >",
+    },
+    {
+      imageUrl: "'/assets/card-background.jpeg'",
+      buttonText: "Detaylı Bilgi >",
+    },
+    {
+      imageUrl: "'/assets/card-background.jpeg'",
+      buttonText: "Detaylı Bilgi >",
+    },
+    {
+      imageUrl: "'/assets/card-background.jpeg'",
+      buttonText: "Detaylı Bilgi >",
+    },
+  ];
   return (
     <main>
       <Header />
-      <Slider/>
-      <div className="grid grid-cols-3 ml-14 mt-20 mb-20">
-        <Card
-          imageUrl="'/assets/card-background.jpeg'"
-          buttonText="Detaylı Bilgi >"
-        />
-        <Card
-          imageUrl="'/assets/card-background.jpeg'"
-          buttonText="Detaylı Bilgi >"
-        />
-        <Card
-          imageUrl="'/assets/card-background.jpeg'"
-          buttonText="Detaylı Bilgi >"
-        />
-        <Card
-          imageUrl="'/assets/card-background.jpeg'"
-          buttonText="Detaylı Bilgi >"
-        />
-        <Card
-          imageUrl="'/assets/card-background.jpeg'"
-          buttonText="Detaylı Bilgi >"
-        />
-        <Card
-          imageUrl="'/assets/card-background.jpeg'"
-          buttonText="Detaylı Bilgi >"
-        />
+      <Slider />
+      <div className="grid md:grid-cols-3 grid-cols-1 md:ml-14 md:mt-20 md:mb-20 mt-24">
+        {list.map((item: any, index: number) => (
+          <Card
+          key={index}
+            imageUrl={item.imageUrl}
+            buttonText={item.buttonText}
+          />
+        ))}
       </div>
       <Kvkk />
 
