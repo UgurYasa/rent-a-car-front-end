@@ -51,7 +51,13 @@ export default function Araclar() {
           <Select
             options={options}
             value={selectedTitle}
-            onChange={(selectedOption) => setSelectedTitle(selectedOption)}
+            onChange={(selectedOption: any) => {
+              if (selectedOption && selectedOption.value) {
+                setSelectedTitle(selectedOption);
+              } else {
+                setSelectedTitle(null);
+              }
+            }}
             placeholder={options[0].label}
             className="w-96"
           />
