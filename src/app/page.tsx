@@ -40,15 +40,13 @@ export default function Home() {
       <div className="grid md:grid-cols-3 grid-cols-1 md:ml-14 md:mt-20 md:mb-20 mt-24">
         {list.map((item: any, index: number) => (
           <Card
-          key={index}
+            key={index}
             imageUrl={item.imageUrl}
             buttonText={item.buttonText}
           />
         ))}
       </div>
       <Kvkk />
-
-      <Footer />
     </main>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
+import Login from "../Login";
 
 import { useRouter } from "next/navigation";
 import MenuItems from "./MenuItems";
@@ -20,9 +21,14 @@ export default function Header() {
       title: "Rezervasyonu Yönet",
       url: "/rezervasyon-yonet",
       submenu: [
-        { id: 6, title: "Deneme", url: "/deneme", submenu: [] },
-        { id: 7, title: "Deneme2", url: "/deneme2", submenu: [] },
-        { id: 8, title: "", url: "", submenu: [] },
+        {
+          id: 6,
+          title: "Rezervasyon İptal / Güncelleme",
+          url: "/iptal-guncelleme",
+          submenu: [],
+        },
+
+        { id: 7, title: "İletişim", url: "/iletisim", submenu: [] },
       ],
     },
     {
@@ -103,16 +109,20 @@ export default function Header() {
                 X
               </li>
               {menu &&
-                menu.map((menu, index) => {
+                menu.map((menuItem, index) => {
                   const depthLevel = 0;
                   return (
                     <ClientOnly key={index}>
-                      <MenuItems
-                        items={menu}
-                        key={index}
-                        depthLevel={depthLevel}
-                        icon={menu.icon}
-                      />
+                      {menuItem.id === 7 ? (
+                        <Login />
+                      ) : (
+                        <MenuItems
+                          items={menuItem}
+                          key={index}
+                          depthLevel={depthLevel}
+                          icon={menuItem.icon}
+                        />
+                      )}
                     </ClientOnly>
                   );
                 })}
