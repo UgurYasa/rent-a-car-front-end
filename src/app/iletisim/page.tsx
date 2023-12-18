@@ -20,15 +20,15 @@ export default function Iletisim() {
       <div className="flex md:flex-row flex-col max-md:container max-md:gap-8 ">
         <Comment
           title="Rezervasyonlarınız İçin"
-          text="rez@budget.com.tr e-posta adresimizden veya hafta içi ve hafta sonu 09:00 - 19:00 saatleri arasında ise 444 4 722 numaralı hattımızdan 1’i tuşlayarak Rezervasyon Merkezimize ulaşabilirsin. www.budget.com.tr web sitemizden rezervasyonlarınızı online olarak da gerçekleştirebilirsin. Yurt Dışı aramaları için numaramız + 90 (216) 444 4 722"
+          text="rez@qualizto.com.tr e-posta adresimizden veya hafta içi ve hafta sonu 09:00 - 19:00 saatleri arasında ise 222 22 222 numaralı hattımızdan 1’i tuşlayarak Rezervasyon Merkezimize ulaşabilirsin. wwww.qualizto.com web sitemizden rezervasyonlarınızı online olarak da gerçekleştirebilirsin. Yurt Dışı aramaları için numaramız + 90 (222) 222 2 222"
         />
         <Comment
           title="Müşteri İlişkileri"
-          text="Her türlü öneri, talep, eleştiri ve yorumların için hafta içi 08:00 17:00 saatleri arasında 444 4 722 numaralı hattımızdan 3’ü tuşlayarak İletişim Merkezimizden, web sitemizde bulunan iletişim formumuz veya cs@budget.com.tr e-posta adresimiz aracılığıyla bize ulaşabilirsin."
+          text="Her türlü öneri, talep, eleştiri ve yorumların için hafta içi 08:00 17:00 saatleri arasında 222 22 222 numaralı hattımızdan 3’ü tuşlayarak İletişim Merkezimizden, web sitemizde bulunan iletişim formumuz veya cs@qualizto.com.tr e-posta adresimiz aracılığıyla bize ulaşabilirsin."
         />
         <Comment
           title="Tam Destek Hattı"
-          text="Arıza, kaza ve benzeri her türlü acil durumda 444 4 722 numaralı hattımızdan 2’yi tuşlayarak 7 gün 24 saat bizlere ulaşabilir ve yol yardım talep edebilirsin."
+          text="Arıza, kaza ve benzeri her türlü acil durumda 222 22 222 numaralı hattımızdan 2’yi tuşlayarak 7 gün 24 saat bizlere ulaşabilir ve yol yardım talep edebilirsin."
         />
       </div>
       <div className="flex md:flex-row  flex-col md:m-8 ">
