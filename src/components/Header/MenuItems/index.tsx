@@ -10,10 +10,12 @@ const MenuItems = ({
   items,
   depthLevel,
   icon = null,
+  isMenu
 }: {
   items: MENU_TREE_ITEM;
   depthLevel: number;
   icon?: JSX.Element | null;
+  isMenu?:boolean
 }) => {
   const router = useRouter();
   const [dropdown, setDropdown] = useState(false);
@@ -61,6 +63,7 @@ const MenuItems = ({
             depthLevel={depthLevel}
             submenus={items.submenu}
             dropdown={dropdown}
+            isMenu={isMenu}
           />
         )}
       </>

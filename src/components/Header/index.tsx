@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import Image from "next/image";
+
 import Link from "next/link";
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import MenuItems from "./MenuItems";
 import { MENU_TREE } from "@/types/menu";
 import ClientOnly from "../ClientOnly";
+import { Image } from "@nextui-org/react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,22 +76,21 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full bg-[#00285f] py-5">
       <div className="container flex w-full items-center justify-between">
         <Link href="/" className="cursor-pointer">
-          <div className="relative mr-16 h-[53px] w-[188px] mt-4 object-contain 2xl:h-[80px] 2xl:w-[278px]">
+         
             <Image
               src="/assets/logo.png"
               alt="logo"
-              fill
               onClick={() => {
                 router.push("/");
               }}
+              className={`mr-16 h-[53px] w-[188px] mt-4 object-contain 2xl:h-[80px] 2xl:w-[278px] ${isMenuOpen?"invisible":"visible"}`}
             />
-          </div>
+         
         </Link>
 
         <nav className=" font-sans md:pt-2 2xl:pt-4">
           <GiHamburgerMenu
-            size={26}
-            className="fill-white md:hidden"
+            className={`fill-white  rounded-full border-2 border-slate-400 p-2 text-5xl  ${isMenuOpen ? "block" : "md:hidden block"}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           />
           {menu && (
@@ -98,15 +98,19 @@ export default function Header() {
               className={clsx(
                 "gap-10 text-sm text-white md:flex 2xl:text-xl",
                 isMenuOpen
-                  ? "fixed inset-0 flex flex-col items-center justify-around bg-primary-blue"
+                  ? "fixed inset-0 flex flex-col  pl-5 items-start gap-2 bg-primary-blue md:w-1/4 w-1/2"
                   : "hidden"
               )}
             >
               <li
-                className="self-end pr-10 md:hidden"
+                className={`self-start pr-10 ${isMenuOpen?"block":"hidden"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                X
+                <Image
+                  alt="Logo"
+                  src="/assets/logo.png"
+                  className={`mr-16 h-[53px] w-[188px] 2xl:h-[80px] 2xl:w-[278px] mt-4 object-contain`}
+                />
               </li>
               {menu &&
                 menu.map((menuItem, index) => {
@@ -121,6 +125,7 @@ export default function Header() {
                           key={index}
                           depthLevel={depthLevel}
                           icon={menuItem.icon}
+                          isMenu={isMenuOpen}
                         />
                       )}
                     </ClientOnly>
