@@ -14,7 +14,7 @@ export default function IptalGuncelleme() {
       <div className="bg-orange-500 w-full h-28 flex justify-center items-center text-3xl text-white font-bold mb-20">
         Rezervasyon İptal / Güncelleme
       </div>
-      <div className="container flex flex-row gap-12 mb-20">
+      <div className="container  items-center justify-center flex md:flex-row flex-col gap-12 mb-20">
         <div>
           <Image
             src="/assets/card-background.jpeg"
@@ -30,7 +30,7 @@ export default function IptalGuncelleme() {
           </h1>
           <Input
             placeholder="Rezervasyon numaranızı yazınız"
-            className="md:col-span-2 col-span-4 w-[650px] shadow-2xl border-1 border-gray-300"
+            className="md:col-span-2 col-span-4 md:w-[650px] w-auto shadow-2xl border-1 border-gray-300"
             classNames={{
               inputWrapper: [
                 "bg-white",
@@ -45,7 +45,7 @@ export default function IptalGuncelleme() {
           />
           <Input
             placeholder="Soyadınızı yazınız"
-            className="md:col-span-2 col-span-4 w-[650px] shadow-2xl border-1 border-gray-300"
+            className="md:col-span-2 col-span-4 md:w-[650px] w-auto shadow-2xl border-1 border-gray-300"
             classNames={{
               inputWrapper: [
                 "bg-white",
@@ -58,7 +58,7 @@ export default function IptalGuncelleme() {
             }}
             size="sm"
           />
-          <Button className="md:col-span-1 col-span-3 bg-orange-500 w-1/3 rounded-full self-end mr-6 text-white p-2">
+          <Button className="md:col-span-1 col-span-3 bg-orange-500 w-1/3 rounded-full md:self-end self-center mr-6 text-white p-2">
             Kayıt Ol
           </Button>
         </div>
