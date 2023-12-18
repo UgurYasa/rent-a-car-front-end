@@ -33,7 +33,7 @@ const MenuItems = ({
           className={clsx(
             "group flex w-full cursor-pointer items-center border-[none]",
             depthLevel === 0 && "py-2 text-white",
-            depthLevel > 0 && "px-4 py-2 text-black hover:bg-[#4E84F7] "
+            depthLevel > 0 && "px-4 py-2 text-black hover:bg-[#4E84F7]"
           )}
           aria-haspopup="menu"
           aria-expanded={dropdown ? "true" : "false"}

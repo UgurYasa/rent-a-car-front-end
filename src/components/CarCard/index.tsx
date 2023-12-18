@@ -17,9 +17,9 @@ import { BsCreditCard2FrontFill } from "react-icons/bs";
 import { GiPillow } from "react-icons/gi";
 import { BiLogoAngular } from "react-icons/bi";
 
-export default function CarCard() {
+export default function CarCard({classNames}:any) {
   return (
-    <div className="w-full h-[65vh] border-2 gap-10 flex flex-col shadow-lg p-6">
+    <div className={`w-full h-full border-2 gap-10 flex flex-col shadow-lg p-6 ${classNames}`}>
       <div className="flex flex-row justify-between">
         <div>
           <h1 className="text-orange-500">Ekonomik Kiralık Araç</h1>

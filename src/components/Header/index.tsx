@@ -90,15 +90,15 @@ export default function Header() {
 
         <nav className=" font-sans md:pt-2 2xl:pt-4">
           <GiHamburgerMenu
-            className={`fill-white  rounded-full border-2 border-slate-400 p-2 text-5xl  ${isMenuOpen ? "block" : "md:hidden block"}`}
+            className={`fill-white  rounded-full border-2 border-slate-400 p-2 text-5xl  ${isMenuOpen ? "block" : "xl:hidden block"}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           />
           {menu && (
             <ul
               className={clsx(
-                "gap-10 text-sm text-white md:flex 2xl:text-xl",
+                "gap-10 text-sm text-white xl:flex 2xl:text-xl",
                 isMenuOpen
-                  ? "fixed inset-0 flex flex-col  pl-5 items-start gap-2 bg-primary-blue md:w-1/4 w-1/2"
+                  ? "fixed inset-0 flex flex-col  pl-5 items-start gap-2 bg-primary-blue md:w-1/3 w-1/2"
                   : "hidden"
               )}
             >

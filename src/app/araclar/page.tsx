@@ -28,25 +28,7 @@ export default function Araclar() {
       <div className="bg-orange-500 w-full h-28 justify-center flex flex-col items-center py-24 gap-4">
         <h1 className="text-3xl text-white font-bold">Kiralık Araçlar</h1>
       </div>
-
-      <div className="hidden md:flex w-full  justify-center mb-20">
-        <table className="border-collapse  bg-[#00285f]">
-          <thead>
-            <tr>
-              {rentalCarTitles.map((title, index) => (
-                <th
-                  key={index}
-                  className="py-2 px-10 text-white font-normal bg-[#00285f] border-r hover:bg-orange-500"
-                >
-                  {title}
-                </th>
-              ))}
-            </tr>
-          </thead>
-        </table>
-      </div>
-
-      <div className="w-full flex justify-center mb-20 bg-[#00285f]">
+      <div className="w-full flex justify-center md:mb-0 mb-20 bg-[#00285f]">
         <div className="md:hidden bg-red-500">
           <Select
             options={options}
@@ -63,13 +45,37 @@ export default function Araclar() {
           />
         </div>
       </div>
-
-      {/* Araç kartları */}
-      <div className="grid md:grid-cols-3 grid-cols-1 mx-10 mb-32 gap-8">
+      <div className="flex flex-col w-full  justify-center mb-10 container gap-20  ">
+        <table className=" hidden md:block border-collapse  bg-[#00285f]">
+          <thead>
+            <tr>
+              {rentalCarTitles.map((title, index) => (
+                <th
+                  key={index}
+                  className="py-2 px-10 text-white font-normal bg-[#00285f] border-r hover:bg-orange-500 cursor-pointer"
+                >
+                  {title}
+                </th>
+              ))}
+            </tr>
+          </thead>
+        </table>
+        <div className="grid md:grid-cols-3 grid-cols-1  mb-24 gap-8">
         <CarCard />
         <CarCard />
         <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+       
       </div>
+      </div>
+    
+
+
+  
     </div>
   );
 }
