@@ -5,7 +5,7 @@ import Cookies from "universal-cookie";
 const isServer = typeof window === "undefined";
 
 const axiosClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://conval.cosmostest.tech",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://qualizto.azurewebsites.net/api",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
