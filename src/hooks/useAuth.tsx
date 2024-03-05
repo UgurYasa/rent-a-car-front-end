@@ -5,11 +5,11 @@ import { JWTPayload } from "jose";
 const fromServer = async () => {
   const cookies = require("next/headers").cookies;
   const cookieList = cookies();
-  const { value: access_token } = cookieList.get("access_token") || {
+  const { value: token } = cookieList.get("token") || {
     value: null,
   };
 
-  return access_token;
+  return token;
 };
 
 export function useAuth() {
@@ -17,9 +17,9 @@ export function useAuth() {
 
   const getVerifiedtoken = async () => {
     const cookies = new Cookies();
-    const access_token = cookies.get("access_token") || null;
+    const token = cookies.get("token") || null;
 
-    setAuth(access_token);
+    setAuth(token);
   };
 
   React.useEffect(() => {
