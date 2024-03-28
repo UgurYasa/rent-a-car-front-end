@@ -1,5 +1,5 @@
+"use client";
 import clsx from "clsx";
-
 import Link from "next/link";
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -76,21 +76,23 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full bg-[#00285f] py-5">
       <div className="container flex w-full items-center justify-between">
         <Link href="/" className="cursor-pointer">
-         
-            <Image
-              src="/assets/logo.png"
-              alt="logo"
-              onClick={() => {
-                router.push("/");
-              }}
-              className={`mr-16 h-[53px] w-[188px] mt-4 object-contain 2xl:h-[80px] 2xl:w-[278px] ${isMenuOpen?"invisible":"visible"}`}
-            />
-         
+          <Image
+            src="/assets/logo.png"
+            alt="logo"
+            onClick={() => {
+              router.push("/");
+            }}
+            className={`mr-16 h-[53px] w-[188px] mt-4 object-contain 2xl:h-[80px] 2xl:w-[278px] ${
+              isMenuOpen ? "invisible" : "visible"
+            }`}
+          />
         </Link>
 
         <nav className=" font-sans md:pt-2 2xl:pt-4">
           <GiHamburgerMenu
-            className={`fill-white  rounded-full border-2 border-slate-400 p-2 text-5xl  ${isMenuOpen ? "block" : "xl:hidden block"}`}
+            className={`fill-white  rounded-full border-2 border-slate-400 p-2 text-5xl  ${
+              isMenuOpen ? "block" : "xl:hidden block"
+            }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           />
           {menu && (
@@ -103,7 +105,9 @@ export default function Header() {
               )}
             >
               <li
-                className={`self-start pr-10 ${isMenuOpen?"block":"hidden"}`}
+                className={`self-start pr-10 ${
+                  isMenuOpen ? "block" : "hidden"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Image
@@ -116,7 +120,7 @@ export default function Header() {
                 menu.map((menuItem, index) => {
                   const depthLevel = 0;
                   return (
-                    <ClientOnly key={index}>
+                    <div key={index}>
                       {menuItem.id === 7 ? (
                         <Login />
                       ) : (
@@ -128,7 +132,7 @@ export default function Header() {
                           isMenu={isMenuOpen}
                         />
                       )}
-                    </ClientOnly>
+                    </div>
                   );
                 })}
             </ul>
