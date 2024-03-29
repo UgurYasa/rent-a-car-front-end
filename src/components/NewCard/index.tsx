@@ -13,7 +13,7 @@ export default function NewCard({
   description:string;
 }) {
   return (
-    <div className="flex flex-col m-10 h-full items-center p-5">
+    <div className="flex flex-col  h-full items-center md:p-6 p-2 w-full">
       <Image
         isZoomed
         className="w-full h-1/3 rounded-none "

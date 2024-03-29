@@ -69,8 +69,8 @@ export default function Kampanyalar() {
           <button className="px-[14px] py-[6px] bg-[#001a3d] hover:bg-orange-400">Yurtdışı(5)</button>
         </div>
       </div>
-      <div className="flex items-center justify-center w-full">
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 md:ml-14  gap-1 w-5/6 border-t-[1px] items-center">
+      <div className="flex items-center justify-center w-full max-md:px-5">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-1 md:w-5/6 w-full border-t-[1px]">
         {list.map((item: any, index: number) => (
           <Link href="/kampanya-detail" key={index}>
           <NewCard
