@@ -94,7 +94,7 @@ export default function Home() {
     <main>
       <Header />
       <Slider />
-      <div className="w-full flex items-center justify-center max-md:my-16 max-md:px-5">
+      <div className="w-full flex items-center justify-center max-md:my-20 max-md:px-5">
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1  md:w-5/6 w-full md:gap-8 gap-4">
         {list.map((item: any, index: number) => (
         <Link href="/kampanyalar" key={index}>
