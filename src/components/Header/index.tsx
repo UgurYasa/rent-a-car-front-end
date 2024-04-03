@@ -3,80 +3,23 @@ import clsx from "clsx";
 import Link from "next/link";
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaUser } from "react-icons/fa";
 import Login from "../Login";
-
 import { useRouter } from "next/navigation";
 import MenuItems from "./MenuItems";
-import { MENU_TREE } from "@/types/menu";
-import ClientOnly from "../ClientOnly";
-import { Image } from "@nextui-org/react";
 
+import { Image } from "@nextui-org/react";
+import { menu } from "@/constants/header";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
-  const menu: MENU_TREE = [
-    {
-      id: 1,
-      title: "Rezervasyonu Yönet",
-      url: "/rezervasyon-yonet",
-      submenu: [
-        {
-          id: 6,
-          title: "Rezervasyon İptal / Güncelleme",
-          url: "/iptal-guncelleme",
-          submenu: [],
-        },
-
-        { id: 7, title: "İletişim", url: "/iletisim", submenu: [] },
-      ],
-    },
-    {
-      id: 2,
-      title: "Araçlar",
-      url: "/araclar",
-      submenu: [],
-    },
-    {
-      id: 3,
-      title: "Kampanyalar",
-      url: "/kampanyalar",
-      submenu: [],
-    },
-    {
-      id: 4,
-      title: "Ofisler",
-      url: "/ofisler",
-      submenu: [],
-    },
-    {
-      id: 5,
-      title: "Hizmetler",
-      url: "/hizmetler",
-      submenu: [],
-    },
-    {
-      id: 6,
-      title: "Ürünler & Güvenceler",
-      url: "/urunler-guvenceler",
-      submenu: [],
-    },
-
-    {
-      id: 7,
-      title: "Üye Girişi",
-      url: "/uye-girisi",
-      submenu: [],
-      icon: <FaUser size={20} />,
-    },
-  ];
+  
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#00285f] py-5">
       <div className="container flex w-full items-center justify-between">
         <Link href="/" className="cursor-pointer">
-          <Image
+          <img
             src="/assets/logo.png"
             alt="logo"
             onClick={() => {

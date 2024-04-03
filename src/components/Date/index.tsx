@@ -4,8 +4,8 @@ export default function Date({ label }: any) {
   const list = label.split(" ");
   return (
     <div className="w-full h-auto  flex flex-row items-center my-5 md:justify-center">
-      <div className="border-r-2 border-[#ed5505]  md:h-20 h-10 ml-3" />
-      <p className="text-white md:text-base text-xs md:mx-5 mx-3 font-extralight">
+      <div className="border-r-2 border-[#ed5505]  md:h-20 h-10 ml-3 md:block hidden" />
+      <p className="text-white md:text-base text-xs md:mx-5 mx-3 font-extralight md:block hidden">
         {list[0]}
         <br />
         {list[1]}

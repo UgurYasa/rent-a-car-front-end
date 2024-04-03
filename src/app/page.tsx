@@ -1,6 +1,4 @@
 "use client";
-
-import Card from "@/components/Card";
 import Slider from "@/components/Slider";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -14,6 +12,7 @@ import { getCustomer } from "@/services/customer";
 import { getRentals } from "@/services/rentals";
 import NewCard from "@/components/NewCard";
 import Link from "next/link";
+import { CAMPAIGNS } from "@/constants/campaigns";
 
 export default function Home() {
   const { data: brandData, error: brandError } = useQuery<any, Error>(
@@ -52,58 +51,21 @@ export default function Home() {
   console.log(customerData, customerError);
   console.log(rentalsData, rentalsError);
 
-  const list = [
-    {
-      imageUrl: "/assets/card-background.jpeg",
-      buttonText: "Detaylı Bilgi >",
-      title:"Seyahat",
-      description:"Online Ödeme’de %30 İndirim!"
-    },
-    {
-      imageUrl: "/assets/card-background.jpeg",
-      buttonText: "Detaylı Bilgi >",
-      title:"Seyahat",
-      description:"Qualizto Müşterileri İstanbul’da Tek Yön Ücreti Ödemiyor!"
-    },
-    {
-      imageUrl: "/assets/card-background.jpeg",
-      buttonText: "Detaylı Bilgi >",
-      title:"Seyahat",
-      description:"Qualizto Manisa Ofisinden aracınızı kiralayın tek yön ücretini ödemeyin"
-    },
-    {
-      imageUrl: "/assets/card-background.jpeg",
-      buttonText: "Detaylı Bilgi >",
-      title:"Seyahat",
-      description:"İzmirlilerin Tek Yön Ücreti Budget’tan!"
-    },
-    {
-      imageUrl: "/assets/card-background.jpeg",
-      buttonText: "Detaylı Bilgi >",
-      title:"Seyahat",
-      description:"İstanbulluların Tek Yön Ücreti Budget’tan!"
-    },
-    {
-      imageUrl: "/assets/card-background.jpeg",
-      buttonText: "Detaylı Bilgi >",
-      title:"Seyahat",
-      description:"Qualizto'da Antalyada Çalışanları Fırsatlar Bekliyor!"
-    },
-  ];  
+  
   return (
     <main>
       <Header />
       <Slider />
       <div className="w-full flex items-center justify-center max-md:my-20 max-md:px-5">
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1  md:w-5/6 w-full md:gap-8 gap-4">
-        {list.map((item: any, index: number) => (
+        {CAMPAIGNS.map((item: any, index: number) => (
         <Link href="/kampanyalar" key={index}>
           <NewCard
             key={index}
             imageUrl={item.imageUrl}
             buttonText={item.buttonText}
             title={item.title}
-            description={item.description}
+            subtitle={item.subtitle}
           />
         </Link>
         ))}

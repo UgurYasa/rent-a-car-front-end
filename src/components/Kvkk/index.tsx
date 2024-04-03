@@ -27,7 +27,7 @@ const Kvkk = () => {
           }}
           size="sm"
         />
-        <label className="md:col-span-2 col-span-3">
+        <label className="md:col-span-2 col-span-4">
           <Checkbox
             value={`${!selected}`}
             onValueChange={(e) => {

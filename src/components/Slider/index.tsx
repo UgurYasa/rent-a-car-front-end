@@ -6,7 +6,7 @@ import Date from "../Date";
 
 export default function Slider() {
   return (
-    <div className="flex  items-center justify-center w-full h-screen -mt-4 ">
+    <div className="flex  items-center justify-center w-full h-screen -mt-4">
       <div className="flex flex-col justify-end h-full w-full absolute">
         <div className="relative w-full h-full">
           <Image
@@ -33,7 +33,7 @@ export default function Slider() {
 
         <div className=" bg-[#00285F] absolute flex flex-col justify-evenly items-center md:p-5 p-0 pb-0 md:w-auto w-[90vw]">
           <div className="flex md:flex-row flex-col w-full px-5">
-            <div className="flex flex-col ">
+            <div className="flex flex-col md:mr-5">
               <Location
                 label="Teslim Alma Ofisi"
                 placeHolder="Alış Ofisi Seç"
