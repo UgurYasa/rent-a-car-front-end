@@ -6,8 +6,10 @@ import Image from "next/image";
 
 import { Button, Input } from "@nextui-org/react";
 import Kvkk from "@/components/Kvkk";
+import Breadcumbs from "@/components/Breadcumbs";
 
 export default function IptalGuncelleme() {
+  const list =["AnaSayfa","Rezervasyon İptal / Güncelleme"]
   return (
     <div>
       <Header />
@@ -63,6 +65,7 @@ export default function IptalGuncelleme() {
           </Button>
         </div>
       </div>
+      <Breadcumbs routes={list} />
       <Kvkk />
     </div>
   );

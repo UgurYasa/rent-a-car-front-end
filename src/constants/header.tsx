@@ -34,12 +34,30 @@ export const menu: MENU_TREE = [
     {
       id: 3,
       title: "Kampanyalar",
-      url: "/kampanyalar",
+      url: "/kampanyalar/qualizto-kampanyalari",
       submenu: [
         {
           id: 9,
           title: "Qualizto Kampanyaları",
-          url: "/kampanyalar",
+          url: "/kampanyalar/qualizto-kampanyalari",
+          submenu: [],
+        },
+        {
+          id: 10,
+          title: "Qualizto Kurumsal Kampanyaları",
+          url: "/kampanyalar/qualizto-kurumsal-kampanyalari",
+          submenu: [],
+        },
+        {
+          id: 11,
+          title: "Diğer Avantajlar",
+          url: "/kampanyalar/diger-avantajlar",
+          submenu: [],
+        },
+        {
+          id: 12,
+          title: "Qualizto İş Birliği Anlaşmaları",
+          url: "/kampanyalar/qualizto-is-birligi-anlasmalari",
           submenu: [],
         },
 

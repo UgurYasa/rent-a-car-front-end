@@ -2,10 +2,12 @@
 import Comment from "@/components/Comment";
 import Header from "@/components/Header";
 import React from "react";
-import { Input, Textarea } from "@nextui-org/react";
+import { Button, Input, Textarea } from "@nextui-org/react";
 import Kvkk from "@/components/Kvkk";
+import Breadcumbs from "@/components/Breadcumbs";
 
 export default function Iletisim() {
+  const list = ["AnaSayfa", "İletişim"];
   return (
     <div>
       <Header />
@@ -169,8 +171,14 @@ export default function Iletisim() {
               />
             </div>
           </div>
+          <div className="w-full flex items-center md:justify-end container">
+            <Button className="my-10 bg-orange-500 rounded text-white px-10 py-4 flex text-lg">
+              Formu Gönder &#62;
+            </Button>{" "}
+          </div>
         </div>
       </div>
+      <Breadcumbs routes={list} />
       <Kvkk />
     </div>
   );

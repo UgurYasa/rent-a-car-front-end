@@ -22,7 +22,7 @@ const MenuItems = ({
 
   return (
     <li
-      className="relative text-xs 2xl:text-base"
+      className="relative text-base 2xl:text-base"
       onMouseEnter={() => {
         setDropdown(true);
       }}

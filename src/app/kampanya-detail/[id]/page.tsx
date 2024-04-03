@@ -3,15 +3,31 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Kvkk from "@/components/Kvkk";
 import React, { useState } from "react";
-import { CAMPAIGNS } from "@/constants/campaigns";
-import CampaignSlider from "@/components/CampaignSlider";
+import {
+  QualiztoCampaigns,
+  QualiztoCorporateCampaigns,
+  OtherAdvantages,
+  QualiztoCooperationAgreements,
+} from "@/constants/campaigns";import CampaignSlider from "@/components/CampaignSlider";
 
 export default function KampanyaDetail({params}:any) {
   const [click, setclick] = useState(false);
   const [show, setShow] = useState(false);
-  const path= params.id;
+  const path= params.id.split("_")[0];
+  const index=params.id.split("_")[1];
+  console.log(path);
+  console.log(index);
   
-  const element = CAMPAIGNS[path]; 
+  
+  const element = path === "qualizto-kampanyalari"
+  ? QualiztoCampaigns[index]
+  : path === "qualizto-kurumsal-kampanyalari"
+  ? QualiztoCorporateCampaigns[index]
+  : path === "diger-avantajlar"
+  ? OtherAdvantages[index]
+  : QualiztoCooperationAgreements[index]; 
+  console.log(element);
+  
 
   // const element = {
   //   title: "Seyahat",
@@ -66,5 +82,6 @@ export default function KampanyaDetail({params}:any) {
       <Kvkk />
       <Footer />
     </div>
+   
   );
 }

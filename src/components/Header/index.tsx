@@ -6,14 +6,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Login from "../Login";
 import { useRouter } from "next/navigation";
 import MenuItems from "./MenuItems";
-
 import { Image } from "@nextui-org/react";
 import { menu } from "@/constants/header";
 export default function Header() {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
-
-  
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#00285f] py-5">
@@ -41,7 +39,7 @@ export default function Header() {
           {menu && (
             <ul
               className={clsx(
-                "gap-10 text-sm text-white xl:flex 2xl:text-xl",
+                "gap-10 text-2xl text-white xl:flex 2xl:text-xl",
                 isMenuOpen
                   ? "fixed inset-0 flex flex-col  pl-5 items-start gap-2 bg-primary-blue md:w-1/3 w-1/2"
                   : "hidden"
