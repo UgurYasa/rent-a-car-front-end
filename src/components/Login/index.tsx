@@ -1,6 +1,11 @@
-"use client";
-import { createUser, login } from "@/services/auth";
-import { Login, Register } from "@/types/auth";
+import {
+  handleChangeLogin,
+  handleChangeRegister,
+  setIsLogin,
+  setIsShow,
+  setSelected,
+  successfullyLogin
+} from "@/redux/userSlice";
 import {
   Button,
   Card,
@@ -14,77 +19,19 @@ import {
   Tabs,
   User,
 } from "@nextui-org/react";
-import { useMutation } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React from "react";
 import { FaUser } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "universal-cookie";
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const { isLogin, isShow, selected, formLogin } = useSelector(
+    (state: any) => state.user
+  );
   const cookies = new Cookies();
-
-  const mutation1 = useMutation({
-    mutationFn: (data: Login) => login(data),
-    onSuccess: (response) => {
-      if (response.status === 200) {
-        cookies.set("token", response.data.data.token, { path: "/" });
-        cookies.set("email", formLogin.email, { path: "/" });
-        setIsLogin(true);
-        console.log("Login successfull");        
-      }
-    },
-    onSettled: () => {
-      setIsLoading(false);
-    },
-  });
-  const mutation2 = useMutation({
-    mutationFn: (data: Register) => createUser(data),
-    onSuccess: (response) => {
-      if (response.status === 200) {
-        alert("Register successfully");        
-      }
-    },
-    onSettled: () => {
-      setIsLoading(false);
-    },
-  });
-  
-
-  const [isLoading, setIsLoading] = useState(false);
-
-
-
-  /* */
   var mail = cookies.get("email");
-  const [isShow, setIsShow] = useState(false);
-  const [isLogin, setIsLogin] = useState(mail ? true : false);
-  const [selected, setSelected] = useState("login");
-  const [formLogin, setFormLogin] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChangeLogin = (field: string, value: any) => {
-    setFormLogin((prevData) => ({
-      ...prevData,
-      [field]: value.toString(),
-    }));
-  };
-
-  const [formRegister, setFormRegister] = useState({
-    email:"",
-    password:"",
-    firstName:"",
-    lastName:"",
-  });
-
-  const handleChangeRegister = (field: string, value: any) => {
-    setFormRegister((prevData) => ({
-      ...prevData,
-      [field]: value.toString(),
-    }));
-  };
-
 
   return (
     <Popover placement="bottom-start">
@@ -93,7 +40,7 @@ export default function Login() {
           <div
             className="bg-[#00285f] text-white hover:scale-125"
             onClick={() => {
-              setIsShow(true);
+              dispatch(setIsShow(true));
             }}
           >
             <User
@@ -101,9 +48,7 @@ export default function Login() {
               description=""
               avatarProps={{
                 src: "https://banner2.cleanpng.com/20180622/tqt/kisspng-computer-icons-user-clip-art-consignee-5b2d25107181a2.1674732415296852644649.jpg",
-                alt: mail
-                  ? mail.charAt(0).toString()
-                  : "",
+                alt: mail ? mail.charAt(0).toString() : "",
               }}
             />
           </div>
@@ -111,7 +56,7 @@ export default function Login() {
           <Button
             className="bg-[#00285f] text-white hover:scale-125"
             onClick={() => {
-              setIsShow(true);
+              dispatch(setIsShow(true));
             }}
           >
             <FaUser size={20} /> Üye Girişi
@@ -125,8 +70,8 @@ export default function Login() {
             {isLogin ? (
               <Button
                 onClick={() => {
-                  setIsLogin(false);
-                  setIsShow(false);
+                  dispatch(setIsLogin(false));
+                  dispatch(setIsShow(false));
                   cookies.remove("token");
                   cookies.remove("email");
                 }}
@@ -143,7 +88,7 @@ export default function Login() {
                     aria-label="Tabs form"
                     selectedKey={selected}
                     onSelectionChange={(key: React.Key) =>
-                      setSelected(key as string)
+                      dispatch(setSelected(key as string))
                     }
                   >
                     <Tab key="login" title="Giriş Yap">
@@ -154,7 +99,12 @@ export default function Login() {
                           placeholder="E-posta giriniz"
                           type="email"
                           onChange={(e) =>
-                            handleChangeLogin("email", e.target.value)
+                            dispatch(
+                              handleChangeLogin({
+                                field: "email",
+                                value: e.target.value,
+                              })
+                            )
                           }
                         />
                         <Input
@@ -163,26 +113,31 @@ export default function Login() {
                           placeholder="Şifre Giriniz"
                           type="password"
                           onChange={(e) =>
-                            handleChangeLogin("password", e.target.value)
+                            dispatch(
+                              handleChangeLogin({
+                                field: "password",
+                                value: e.target.value,
+                              })
+                            )
                           }
                         />
                         <p className="text-center text-small">
                           Hesabınız yok mu?{" "}
                           <Link
                             size="sm"
-                            onPress={() => setSelected("sign-up")}
+                            onPress={() => dispatch(setSelected("sign-up"))}
                           >
                             Kayıt Ol
                           </Link>
                         </p>
                         <div className="flex gap-2 justify-end">
                           <Button
-                          type="submit"
+                            type="submit"
                             fullWidth
                             color="primary"
                             onClick={() => {
-                              setIsShow(false);
-                              mutation1.mutate(formLogin);
+                              dispatch(successfullyLogin());
+                              cookies.set("email", formLogin.email);
                             }}
                           >
                             Giriş Yap
@@ -198,16 +153,26 @@ export default function Login() {
                           placeholder="Adınızı giriniz"
                           type="text"
                           onChange={(e) =>
-                            handleChangeRegister("firstName", e.target.value)
+                            dispatch(
+                              handleChangeRegister({
+                                field: "firstName",
+                                value: e.target.value,
+                              })
+                            )
                           }
                         />
-                         <Input
+                        <Input
                           isRequired
                           label="Soyad"
                           placeholder="Adınızı giriniz"
                           type="text"
                           onChange={(e) =>
-                            handleChangeRegister("lastName", e.target.value)
+                            dispatch(
+                              handleChangeRegister({
+                                field: "lastName",
+                                value: e.target.value,
+                              })
+                            )
                           }
                         />
                         <Input
@@ -216,7 +181,12 @@ export default function Login() {
                           placeholder="E-posta giriniz"
                           type="email"
                           onChange={(e) =>
-                            handleChangeRegister("email", e.target.value)
+                            dispatch(
+                              handleChangeRegister({
+                                field: "email",
+                                value: e.target.value,
+                              })
+                            )
                           }
                         />
                         <Input
@@ -225,12 +195,20 @@ export default function Login() {
                           placeholder="Şifre giriniz"
                           type="password"
                           onChange={(e) =>
-                            handleChangeRegister("password", e.target.value)
+                            dispatch(
+                              handleChangeRegister({
+                                field: "password",
+                                value: e.target.value,
+                              })
+                            )
                           }
                         />
                         <p className="text-center text-small">
                           Zaten hesabınız var mı?{" "}
-                          <Link size="sm" onPress={() => setSelected("login")}>
+                          <Link
+                            size="sm"
+                            onPress={() => dispatch(setSelected("login"))}
+                          >
                             Giriş Yap
                           </Link>
                         </p>
@@ -239,8 +217,7 @@ export default function Login() {
                             fullWidth
                             color="primary"
                             onClick={() => {
-                              setSelected("login");
-                              mutation2.mutate(formRegister);
+                              dispatch(setSelected("login"));
                             }}
                           >
                             Kayıt Ol

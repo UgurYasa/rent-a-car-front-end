@@ -13,10 +13,10 @@ export default function IptalGuncelleme() {
   return (
     <div>
       <Header />
-      <div className="bg-orange-500 w-full h-28 flex justify-center items-center text-3xl text-white font-bold mb-20">
+      <div className="bg-orange-500 w-full h-28 flex justify-center items-center md:text-3xl text-lg text-white font-bold md:mb-20 mb-5">
         Rezervasyon İptal / Güncelleme
       </div>
-      <div className="container  items-center justify-center flex md:flex-row flex-col gap-12 mb-20">
+      <div className="container  items-center justify-center flex md:flex-row flex-col gap-12 md:mb-20 mb-5">
         <div>
           <Image
             src="/assets/card-background.jpeg"
@@ -25,8 +25,8 @@ export default function IptalGuncelleme() {
             height={600}
           />
         </div>
-        <div className="flex flex-col gap-10 w-1/2">
-          <h1 className="text-xl font-bold mb-4">
+        <div className="flex flex-col gap-10 md:w-1/2 w-full md:px-0 px-5">
+          <h1 className="md:text-xl text-sm font-bold mb-4 mx-2">
             Rezervasyonunu güncellemek veya iptal etmek için rezervasyon
             numaranı ve soyadını girin.
           </h1>
@@ -60,7 +60,7 @@ export default function IptalGuncelleme() {
             }}
             size="sm"
           />
-          <Button className="md:col-span-1 col-span-3 bg-orange-500 w-1/3 rounded-full md:self-end self-center mr-6 text-white p-2">
+          <Button className="col-span-4 bg-orange-500 w-full md:w-1/3 rounded-full md:self-end self-center md:mr-6 text-white p-2">
             Kayıt Ol
           </Button>
         </div>

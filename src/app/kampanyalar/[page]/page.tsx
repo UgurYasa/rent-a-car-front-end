@@ -39,7 +39,7 @@ export default function Kampanyalar({ params }: any) {
     <div>
       <Header />
       <div className="flex items-center justify-center h-28 bg-gradient-to-b from-orange-600 to-orange-400 xl:text-3xl lg:text-2xl text-lg font-black text-white">
-        Qualizto Araç Kiralama Kampanyaları
+        {route}
       </div>
       <div className="flex md:flex-row md:w-5/6 flex-col w-full mx-auto bg-[#001a3d] md:h-20 h-auto items-center gap-5 text-white md:pl-5 max-md:px-2 max-md:py-5">
         <Link href="/kampanyalar/qualizto-kampanyalari">

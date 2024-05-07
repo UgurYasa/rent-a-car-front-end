@@ -15,44 +15,46 @@ import Link from "next/link";
 import { CAMPAIGNS } from "@/constants/home-campaigns";
 import Breadcumbs from "@/components/Breadcumbs";
 
+
 export default function Home() {
-  const { data: brandData, error: brandError } = useQuery<any, Error>(
-    ["brand"],
-    getBrand
-  );
+  // const { data: brandData, error: brandError } = useQuery<any, Error>(
+  //   ["brand"],
+  //   getBrand
+  // );
 
-  const { data: carImagesData, error: carImagesError } = useQuery<any, Error>(
-    ["carImages"],
-    getCarImages
-  );
+  // const { data: carImagesData, error: carImagesError } = useQuery<any, Error>(
+  //   ["carImages"],
+  //   getCarImages
+  // );
 
-  const { data: carsData, error: carsError } = useQuery<any, Error>(
-    ["carsData"],
-    getCars
-  );
+  // const { data: carsData, error: carsError } = useQuery<any, Error>(
+  //   ["carsData"],
+  //   getCars
+  // );
 
-  const { data: colorData, error: colorError } = useQuery<any, Error>(
-    ["colorData"],
-    getColor
-  );
+  // const { data: colorData, error: colorError } = useQuery<any, Error>(
+  //   ["colorData"],
+  //   getColor
+  // );
 
-  const { data: customerData, error: customerError } = useQuery<any, Error>(
-    ["customerData"],
-    getCustomer
-  );
-  const { data: rentalsData, error: rentalsError } = useQuery<any, Error>(
-    ["rentalsData"],
-    getRentals
-  );
+  // const { data: customerData, error: customerError } = useQuery<any, Error>(
+  //   ["customerData"],
+  //   getCustomer
+  // );
+  // const { data: rentalsData, error: rentalsError } = useQuery<any, Error>(
+  //   ["rentalsData"],
+  //   getRentals
+  // );
+  // console.log(brandData, brandError);
+  // console.log(carImagesData, carImagesError);
+  // console.log(carsData, carsError);
+  // console.log(colorData, colorError);
+  // console.log(customerData, customerError);
+  // console.log(rentalsData, rentalsError);
   const list = ["AnaSayfa"];
-  console.log(brandData, brandError);
-  console.log(carImagesData, carImagesError);
-  console.log(carsData, carsError);
-  console.log(colorData, colorError);
-  console.log(customerData, customerError);
-  console.log(rentalsData, rentalsError);
 
   return (
+    
     <main>
       <Header />
       <Slider />
