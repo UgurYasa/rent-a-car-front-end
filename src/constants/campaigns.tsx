@@ -354,4 +354,11 @@ export const QualiztoCooperationAgreements = [
  
 ];
 
+export const campaignsTitles = [
+  "Qualizto Kampanyaları",
+  "Qualizto Kurumsal Kampanyaları",
+  "Diğer Avantajlar",
+  "Qualizto İş Birliği Anlaşmaları",
+];
+
 

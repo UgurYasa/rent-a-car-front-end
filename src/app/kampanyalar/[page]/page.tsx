@@ -10,21 +10,24 @@ import {
   QualiztoCorporateCampaigns,
   OtherAdvantages,
   QualiztoCooperationAgreements,
+  campaignsTitles,
 } from "@/constants/campaigns";
 import Breadcumbs from "@/components/Breadcumbs";
+import { useRouter } from "next/navigation";
 
 export default function Kampanyalar({ params }: any) {
+  var router = useRouter();
   var routeList = ["AnaSayfa"];
   const path = params.page;
   console.log(path);
   const route =
     path === "qualizto-kampanyalari"
-      ? "Qualizto Kampanyaları"
+      ? campaignsTitles[0]
       : path === "qualizto-kurumsal-kampanyalari"
-      ? "Qualizto Kurumsal Kampanyaları"
+      ? campaignsTitles[1]
       : path === "diger-avantajlar"
-      ? "Diğer Avantajlar"
-      : "Qualizto İş Birliği Anlaşmaları";
+      ? campaignsTitles[2]
+      :  campaignsTitles[3];
   const content= path === "qualizto-kampanyalari"
   ? QualiztoCampaigns
   : path === "qualizto-kurumsal-kampanyalari"
@@ -33,7 +36,6 @@ export default function Kampanyalar({ params }: any) {
   ? OtherAdvantages
   : QualiztoCooperationAgreements;
   routeList.push(route);
-  console.log(routeList);
   
   return (
     <div>
@@ -41,56 +43,46 @@ export default function Kampanyalar({ params }: any) {
       <div className="flex items-center justify-center h-28 bg-gradient-to-b from-orange-600 to-orange-400 xl:text-3xl lg:text-2xl text-lg font-black text-white">
         {route}
       </div>
-      <div className="flex md:flex-row md:w-5/6 flex-col w-full mx-auto bg-[#001a3d] md:h-20 h-auto items-center gap-5 text-white md:pl-5 max-md:px-2 max-md:py-5">
-        <Link href="/kampanyalar/qualizto-kampanyalari">
-          <p
-            className={`hover:bg-gradient-to-b hover:from-orange-600 hover:to-orange-400 cursor-pointer md:hover:h-16 max-md:w-full md:items-center md:justify-center flex max-md:mx-2 ${
-              path === "qualizto-kampanyalari"
-                ? "bg-gradient-to-b from-orange-600 to-orange-400 p-4"
-                : ""
-            }`}
-          >
-            Qualizto Kampanyaları
-          </p>
-        </Link>
-        <div className="border-r-[1px] border-white  h-10 max-md:hidden" />
-        <Link href="/kampanyalar/qualizto-kurumsal-kampanyalari">
-          <p
-            className={`hover:bg-gradient-to-b hover:from-orange-600 hover:to-orange-400 cursor-pointer md:hover:h-16 max-md:w-full md:items-center md:justify-center flex max-md:mx-2 ${
-              path === "qualizto-kurumsal-kampanyalari"
-                ? "bg-gradient-to-b from-orange-600 to-orange-400 p-4"
-                : ""
-            }`}
-          >
-            Qualizto Kurumsal Kampanyaları
-          </p>
-        </Link>
-        <div className="border-l-[1px] border-white h-10 max-md:hidden" />
-        <Link href="/kampanyalar/diger-avantajlar">
-          <p
-            className={`hover:bg-gradient-to-b hover:from-orange-600 hover:to-orange-400 cursor-pointer md:hover:h-16 max-md:w-full md:items-center md:justify-center flex max-md:mx-2 ${
-              path === "diger-avantajlar"
-                ? "bg-gradient-to-b from-orange-600 to-orange-400 p-4"
-                : ""
-            }`}
-          >
-            Diğer Avantajlar
-          </p>
-        </Link>
-        <div className="border-l-[1px] border-white h-10 max-md:hidden" />
-        <Link href="/kampanyalar/qualizto-is-birligi-anlasmalari">
-          <p
-            className={`hover:bg-gradient-to-b hover:from-orange-600 hover:to-orange-400 cursor-pointer md:hover:h-16 max-md:w-full md:items-center md:justify-center flex max-md:mx-2 ${
-              path === "qualizto-is-birligi-anlasmalari"
-                ? "bg-gradient-to-b from-orange-600 to-orange-400 p-4"
-                : ""
-            }`}
-          >
-            Qualizto İş Birliği Anlaşmaları
-          </p>
-        </Link>
-        <div className="border-l-[1px] border-white h-10 max-md:hidden" />
-      </div>
+      <table className=" hidden md:block border-collapse  bg-[#00285f] container">
+          <thead>
+            <tr>
+              {campaignsTitles.map((title, index) => (
+                <th
+                  key={index}
+                  className={`py-2 px-10 text-white font-normal  ${
+                    title
+                      .toLowerCase()
+                      .replaceAll(" ", "-")
+                      .replaceAll("ş", "s")
+                      .replaceAll("ı", "i")
+                      .replaceAll("ğ", "g")
+                      .replaceAll("ü", "u")
+                      .replaceAll("ö", "o")
+                      .replaceAll("ç", "c") === path
+                      ? "bg-orange-600"
+                      : "bg-[#00285f]"
+                  } border-r hover:bg-orange-500 cursor-pointer`}
+                  onClick={() => {
+                    const endpoint = title
+                      .toLowerCase()
+                      .replaceAll(" ", "-")
+                      .replaceAll("ş", "s")
+                      .replaceAll("ı", "i")
+                      .replaceAll("ğ", "g")
+                      .replaceAll("ü", "u")
+                      .replaceAll("ö", "o")
+                      .replaceAll("ç", "c");
+
+                    router.push(`/kampanyalar/${endpoint}`);
+                  }}
+                >
+                  {title}
+                </th>
+              ))}
+            </tr>
+          </thead>
+        </table>
+     
 
       <div className="flex md:flex-row flex-col md:w-5/6 mx-auto  h-20 items-center justify-between max-md:mb-5">
         <div className="flex flex-row items-center gap-2">
