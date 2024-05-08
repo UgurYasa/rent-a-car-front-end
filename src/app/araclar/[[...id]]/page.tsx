@@ -6,6 +6,7 @@ import Select from "react-select"; // react-select kütüphanesini import edin
 import { rentalCarTitles, rentalCarFeatures } from "@/constants/cars";
 import { useRouter } from "next/navigation";
 
+
 export default function Araclar({ params }: any) {
   var router = useRouter();
   const path = params.id ? params.id[0] : "kiralik-araclar";
@@ -51,7 +52,7 @@ export default function Araclar({ params }: any) {
   const options = rentalCarTitles.map((car:string) => ({
     value: car,
     label: car,
-  })); // react-select için seçenekleri hazırlayın
+  }));
 
   const rentalCars =
     path === "kiralik-araclar"
@@ -121,6 +122,7 @@ export default function Araclar({ params }: any) {
           )}
         </div>
       </div>
+      
     </div>
   );
 }

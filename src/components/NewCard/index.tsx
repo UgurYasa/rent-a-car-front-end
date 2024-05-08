@@ -13,8 +13,8 @@ export default function NewCard({
   subtitle: string;
 }) {
   return (
-    <div className="flex flex-col  h-full items-center md:p-6 p-2 w-full">
-      <div className="overflow-hidden inline-block md:h-3/5 h-full w-full bg-red-200">
+    <div className="flex flex-col  h-full items-center md:p-6 p-2 w-full border-2">
+      <div className="overflow-hidden inline-block md:h-3/5 h-full w-full bg-red-700">
         <img
           src={imageUrl}
           alt="A beautiful image showcasing our service"
