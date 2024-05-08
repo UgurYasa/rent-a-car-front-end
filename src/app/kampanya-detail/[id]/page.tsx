@@ -15,8 +15,7 @@ export default function KampanyaDetail({params}:any) {
   const [show, setShow] = useState(false);
   const path= params.id.split("_")[0];
   const index=params.id.split("_")[1];
-  console.log(path);
-  console.log(index);
+
   
   
   const element = path === "qualizto-kampanyalari"
@@ -26,7 +25,7 @@ export default function KampanyaDetail({params}:any) {
   : path === "diger-avantajlar"
   ? OtherAdvantages[index]
   : QualiztoCooperationAgreements[index]; 
-  console.log(element);
+
   
 
   // const element = {

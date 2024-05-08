@@ -40,7 +40,6 @@ const MenuItems = ({
           onClick={(e) => {
             e.preventDefault();
             if (!items.url || items.url === "#") return;
-            console.log(items);
             router.push(items.url);
           }}
         >

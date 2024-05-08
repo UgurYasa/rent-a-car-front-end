@@ -20,7 +20,6 @@ export default function Kampanyalar({ params }: any) {
   var router = useRouter();
   var routeList = ["AnaSayfa"];
   const path = params.page;
-  console.log(path);
   const route =
     path === "qualizto-kampanyalari"
       ? campaignsTitles[0]
@@ -38,53 +37,46 @@ export default function Kampanyalar({ params }: any) {
       ? OtherAdvantages
       : QualiztoCooperationAgreements;
   routeList.push(route);
-  const [selectedTitle, setSelectedTitle] = useState(
-    {
-      value: route,
-      label: route,
-    }
-  );
+  const [selectedTitle, setSelectedTitle] = useState({
+    value: route,
+    label: route,
+  });
   const options = campaignsTitles.map((title) => ({
     value: title,
     label: title,
   }));
-  
+
   useEffect(() => {
     var endpoint = "qualizto-kampanyalari";
     if (selectedTitle && selectedTitle.value) {
-      
-       endpoint = selectedTitle.value
-      .toLowerCase()
-      .replaceAll(" ", "-")
-      .replaceAll("ş", "s")
-      .replaceAll("ı", "i")
-      .replaceAll("ğ", "g")
-      .replaceAll("ü", "u")
-      .replaceAll("ö", "o")
-      .replaceAll("ç", "c");
-    } 
-     
+      endpoint = selectedTitle.value
+        .toLowerCase()
+        .replaceAll(" ", "-")
+        .replaceAll("ş", "s")
+        .replaceAll("ı", "i")
+        .replaceAll("ğ", "g")
+        .replaceAll("ü", "u")
+        .replaceAll("ö", "o")
+        .replaceAll("ç", "c");
+    }
 
-      router.push(`/kampanyalar/${endpoint}`);
-   
+    router.push(`/kampanyalar/${endpoint}`);
   }, [selectedTitle]);
-  
+
   return (
     <div>
       <Header />
-      <div className="flex items-center justify-center h-28 bg-gradient-to-b from-orange-600 to-orange-400 xl:text-3xl lg:text-2xl text-lg font-black text-white">
+      <div className="flex items-center justify-center h-28 bg-gradient-to-b from-orange-600 to-orange-400 xl:text-4xl lg:text-3xl text-lg font-black text-white">
         {route}
       </div>
-      <div className="w-full flex justify-center md:mb-0 mb-20 bg-[#00285f]">
-        <div className="lg:hidden bg-red-500 w-full">
+      <div className="w-full flex justify-center md:mb-0 mb-20 bg-[#00285f] px-5">
+        <div className="xl:hidden bg-red-500 w-full">
           <Select
             options={options}
             value={selectedTitle}
             onChange={(selectedOption: any) => {
               if (selectedOption && selectedOption.value) {
                 setSelectedTitle(selectedOption);
-              } else {
-                
               }
             }}
             placeholder={options[0].label}
@@ -92,7 +84,7 @@ export default function Kampanyalar({ params }: any) {
           />
         </div>
       </div>
-      <table className=" hidden lg:block border-collapse  bg-[#00285f] container">
+      <table className=" hidden xl:block border-collapse  bg-[#00285f] container">
         <thead>
           <tr>
             {campaignsTitles.map((title, index) => (

@@ -1,16 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import CarCard from "@/components/CarCard";
 import Select from "react-select"; // react-select kütüphanesini import edin
 import { rentalCarTitles, rentalCarFeatures } from "@/constants/cars";
 import { useRouter } from "next/navigation";
-import { log } from "console";
 
 export default function Araclar({ params }: any) {
-  const [selectedTitle, setSelectedTitle] = useState(null); // Seçili başlık için state
+  var router = useRouter();
   const path = params.id ? params.id[0] : "kiralik-araclar";
-  const sliderTitle =
+  const route =
     path === "kiralik-araclar"
       ? rentalCarTitles[0]
       : path === "ekonomik-kiralik-arac"
@@ -26,52 +25,69 @@ export default function Araclar({ params }: any) {
       : path === "van-kiralik-arac"
       ? rentalCarTitles[6]
       : rentalCarTitles[0];
+  
+  const [selectedTitle, setSelectedTitle] = useState({
+    field: route,
+    label: route,
+  });
 
-  const options = rentalCarTitles.map((title) => ({
-    value: title,
-    label: title,
+  useEffect(() => {
+    var endpoint = "kiralık-araclar";
+    if (selectedTitle && selectedTitle.label) {
+      endpoint = selectedTitle.label
+        .toLowerCase()
+        .replaceAll(" ", "-")
+        .replaceAll("ş", "s")
+        .replaceAll("ı", "i")
+        .replaceAll("ğ", "g")
+        .replaceAll("ü", "u")
+        .replaceAll("ö", "o")
+        .replaceAll("ç", "c");
+    }
+
+    router.push(`/araclar/${endpoint}`);
+  }, [selectedTitle]);
+
+  const options = rentalCarTitles.map((car:string) => ({
+    value: car,
+    label: car,
   })); // react-select için seçenekleri hazırlayın
-  const router = useRouter();
 
-  const rentalCars = path === "kiralik-araclar"
-  ? rentalCarFeatures
-  : rentalCarFeatures.filter((car) => car.subtitle === sliderTitle);
-
+  const rentalCars =
+    path === "kiralik-araclar"
+      ? rentalCarFeatures
+      : rentalCarFeatures.filter((car) => car.subtitle === route);
 
   return (
     <div>
       <Header />
       <div className="bg-orange-500 w-full h-28 justify-center flex flex-col items-center py-24 gap-4">
-        <h1 className="text-3xl text-white font-bold">{sliderTitle}</h1>
+        <h1 className="text-3xl text-white font-bold">{route}</h1>
       </div>
-      <div className="w-full flex justify-center md:mb-0 mb-20 bg-[#00285f]">
-        <div className="md:hidden bg-red-500">
+      <div className="w-full flex justify-center md:mb-0 mb-20 bg-[#00285f] px-5">
+        <div className="xl:hidden bg-red-500 w-full">
           <Select
             options={options}
             value={selectedTitle}
             onChange={(selectedOption: any) => {
               if (selectedOption && selectedOption.value) {
                 setSelectedTitle(selectedOption);
-              } else {
-                setSelectedTitle(null);
               }
             }}
-            placeholder={options[0].label}
-            className="w-96"
+            placeholder={selectedTitle.label}
+            className="w-full"
           />
         </div>
       </div>
       <div className="flex flex-col w-full  justify-center mb-10 container gap-20  ">
-        <table className=" hidden md:block border-collapse  bg-[#00285f]">
+        <table className=" hidden xl:block border-collapse  bg-[#00285f]">
           <thead>
             <tr>
               {rentalCarTitles.map((title, index) => (
                 <th
                   key={index}
                   className={`py-2 px-10 text-white font-normal  ${
-                    title === sliderTitle
-                      ? "bg-orange-600"
-                      : "bg-[#00285f]"
+                    title === route ? "bg-orange-600" : "bg-[#00285f]"
                   } border-r hover:bg-orange-500 cursor-pointer`}
                   onClick={() => {
                     const endpoint = title
@@ -93,13 +109,16 @@ export default function Araclar({ params }: any) {
             </tr>
           </thead>
         </table>
-        <div className="grid md:grid-cols-3 grid-cols-1  mb-24 gap-8">
-        {rentalCars.length > 0 ? 
-  rentalCars.map((car:any, index:any) => (
-    <CarCard car={car} key={index}/>
-  )) :
-  <p className="md:col-span-3 col-span-1  h-full text-center md:text-4xl text-base font-black">Bu kategoride araç bulunamadı 😵</p>
-}
+        <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-5 mb-24 gap-8">
+          {rentalCars.length > 0 ? (
+            rentalCars.map((car: any, index: any) => (
+              <CarCard car={car} key={index} />
+            ))
+          ) : (
+            <p className="xl:col-span-3 col-span-2  h-full text-center md:text-4xl text-lg font-black">
+              Bu kategoride araç bulunamadı 😵
+            </p>
+          )}
         </div>
       </div>
     </div>

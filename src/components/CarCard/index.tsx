@@ -6,7 +6,7 @@ export default function CarCard({ classNames, car }: any) {
     <div
       className={`w-full h-full border-2 gap-10 flex flex-col shadow-lg p-6 ${classNames}`}
     >
-      <div className="flex flex-row justify-between">
+      <div className="flex lg:flex-row flex-col justify-between">
         <div>
           <h1 className="text-orange-500">{car.subtitle}</h1>
           <p className="text-xl font-bold">{car.title}</p>
