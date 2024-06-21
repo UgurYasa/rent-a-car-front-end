@@ -11,6 +11,7 @@ import React from "react";
 import Image from "next/image";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <section className="bg-[#00285f] px-4  py-8 md:py-20  min-h-[40vh] text-white ">
       <div className="container flex flex-col items-center gap-5 justify-center">
@@ -77,7 +78,7 @@ export default function Footer() {
         </div>
         <div className="border-b-[1px] border-white w-full my-4"></div>
         <p className="text-xs md:text-sm font-light">
-          Copyright @2023. Qualizto All Right Reserved
+          Copyright @<span>{year}</span>. Qualizto All Right Reserved
         </p>
       </div>
     </section>

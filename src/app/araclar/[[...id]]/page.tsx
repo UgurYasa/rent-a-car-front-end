@@ -6,7 +6,6 @@ import Select from "react-select"; // react-select kütüphanesini import edin
 import { rentalCarTitles, rentalCarFeatures } from "@/constants/cars";
 import { useRouter } from "next/navigation";
 
-
 export default function Araclar({ params }: any) {
   var router = useRouter();
   const path = params.id ? params.id[0] : "kiralik-araclar";
@@ -26,7 +25,7 @@ export default function Araclar({ params }: any) {
       : path === "van-kiralik-arac"
       ? rentalCarTitles[6]
       : rentalCarTitles[0];
-  
+
   const [selectedTitle, setSelectedTitle] = useState({
     field: route,
     label: route,
@@ -49,7 +48,7 @@ export default function Araclar({ params }: any) {
     router.push(`/araclar/${endpoint}`);
   }, [selectedTitle]);
 
-  const options = rentalCarTitles.map((car:string) => ({
+  const options = rentalCarTitles.map((car: string) => ({
     value: car,
     label: car,
   }));
@@ -113,7 +112,7 @@ export default function Araclar({ params }: any) {
         <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-5 mb-24 gap-8">
           {rentalCars.length > 0 ? (
             rentalCars.map((car: any, index: any) => (
-              <CarCard car={car} key={index} />
+              <CarCard car={car} index={index} key={index} />
             ))
           ) : (
             <p className="xl:col-span-3 col-span-2  h-full text-center md:text-4xl text-lg font-black">
@@ -122,7 +121,6 @@ export default function Araclar({ params }: any) {
           )}
         </div>
       </div>
-      
     </div>
   );
 }

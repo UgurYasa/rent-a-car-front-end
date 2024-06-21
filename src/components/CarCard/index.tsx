@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
-import { createPortal } from "react-dom";
-import { IoCloseCircleOutline } from "react-icons/io5";
 import Link from "next/link";
-import CampaignSlider from "../CampaignSlider";
+import { useRouter } from "next/navigation";
 
 export default function CarCard({ classNames, car }: any) {
-  const [isShow, setIsShow] = useState(false);
-  const [click, setClick] = useState(false);
-
+  const router = useRouter();
   return (
     <div
       className={`w-full h-full border-2 gap-10 flex flex-col shadow-lg p-6 ${classNames}`}
@@ -18,16 +14,14 @@ export default function CarCard({ classNames, car }: any) {
           <h1 className="text-orange-500">{car.subtitle}</h1>
           <p className="text-xl font-bold">{car.title}</p>
         </div>
-        <div>
           <Button
             className="md:col-span-1 col-span-3 bg-orange-600 rounded-full text-white p-4"
             onClick={() => {
-              setIsShow(true);
+              router.push(`/car-detail/${car.id}`);
             }}
           >
             Hemen Kirala
           </Button>
-        </div>
       </div>
       <div className="w-full relative flex justify-center items-center">
         <img src={car.image} alt="logo" width={500} height={500} />
@@ -58,7 +52,14 @@ export default function CarCard({ classNames, car }: any) {
           </ul>
         </div>
       </div>
-      {isShow &&
+    </div>
+  );
+}
+
+//design available for making transactions with popup on the rental screen
+/*
+
+{isShow &&
         createPortal(
           <div
             className="fixed inset-0 z-50 flex flex-col max-h-screen max-w-full items-center justify-center bg-black/60"
@@ -88,6 +89,4 @@ export default function CarCard({ classNames, car }: any) {
           </div>,
           document.body
         )}
-    </div>
-  );
-}
+*/
