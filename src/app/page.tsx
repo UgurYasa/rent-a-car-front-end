@@ -55,8 +55,7 @@ export default function Home() {
 
   return (
     
-    <main>
-      <Header />
+    <main className="flex flex-col bg-slate-200">
       <Slider />
       <div className="w-full flex items-center justify-center max-md:my-20 max-md:px-5">
         <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1  md:w-5/6 w-full md:gap-8 gap-4">
@@ -75,7 +74,6 @@ export default function Home() {
       </div>
       <Breadcumbs routes={list} />
       <Kvkk />
-      <Footer />
     </main>
   );
 }

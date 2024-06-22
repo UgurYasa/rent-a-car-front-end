@@ -41,7 +41,7 @@ export default function Header() {
               className={clsx(
                 "gap-10 text-2xl text-white xl:flex 2xl:text-xl",
                 isMenuOpen
-                  ? "fixed inset-0 flex flex-col  pl-5 items-start gap-2 bg-primary-blue md:w-1/3 w-1/2"
+                  ? "fixed inset-0 flex flex-col  pl-5 items-start gap-2 bg-primary-blue md:w-1/3 w-2/3"
                   : "hidden"
               )}
             >

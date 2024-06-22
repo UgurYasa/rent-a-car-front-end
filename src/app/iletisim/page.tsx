@@ -10,7 +10,6 @@ export default function Iletisim() {
   const list = ["AnaSayfa", "İletişim"];
   return (
     <div>
-      <Header />
       <div className="bg-orange-500 w-full h-28 justify-center flex flex-col items-center  mb-20 py-24 gap-4">
         <h1 className="text-3xl text-white font-bold">İletişim Bilgileri</h1>
         <p className="text-white max-w-[800px] text-center">

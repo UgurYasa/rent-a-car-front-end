@@ -13,7 +13,6 @@ export default function CarDetail({ params }: any) {
   const [clicked, setClicked] = useState(false);
   return (
     <div className="flex flex-col bg-slate-200">
-      <Header />
       <div className="bg-orange-500 w-full h-28 justify-center flex flex-col items-center py-24 gap-4">
         <h1 className="text-3xl text-white font-bold">{car && car.subtitle}</h1>
         <h2 className="text-lg text-white font-bold">{car && car.title}</h2>
@@ -66,7 +65,6 @@ export default function CarDetail({ params }: any) {
           Hemen Kirala
         </Button>
       </div>
-      <Footer />
       {clicked && <RentalScreen setclicked={setClicked} id={car&&car.id} />}
     </div>
   );

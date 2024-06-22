@@ -61,7 +61,6 @@ export default function Araclar({ params }: any) {
 
   return (
     <div>
-      <Header />
       <div className="bg-orange-500 w-full h-28 justify-center flex flex-col items-center md:py-24 gap-4">
         <h1 className="text-3xl text-white font-bold">{route}</h1>
       </div>
@@ -122,7 +121,6 @@ export default function Araclar({ params }: any) {
           )}
         </div>
       </div>
-      <Footer/>
     </div>
   );
 }

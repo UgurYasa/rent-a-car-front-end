@@ -65,7 +65,6 @@ export default function Kampanyalar({ params }: any) {
 
   return (
     <div>
-      <Header />
       <div className="flex items-center justify-center h-28 bg-gradient-to-b from-orange-600 to-orange-400 xl:text-4xl lg:text-3xl text-lg font-black text-white">
         {route}
       </div>
@@ -151,7 +150,6 @@ export default function Kampanyalar({ params }: any) {
       </div>
       <Breadcumbs routes={routeList} />
       <Kvkk />
-      <Footer />
     </div>
   );
 }

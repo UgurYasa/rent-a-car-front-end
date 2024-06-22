@@ -12,7 +12,6 @@ export default function IptalGuncelleme() {
   const list =["AnaSayfa","Rezervasyon İptal / Güncelleme"]
   return (
     <div>
-      <Header />
       <div className="bg-orange-500 w-full h-28 flex justify-center items-center md:text-3xl text-lg text-white font-bold md:mb-20 mb-5">
         Rezervasyon İptal / Güncelleme
       </div>
@@ -32,7 +31,7 @@ export default function IptalGuncelleme() {
           </h1>
           <Input
             placeholder="Rezervasyon numaranızı yazınız"
-            className="md:col-span-2 col-span-4 md:w-[650px] w-auto shadow-2xl border-1 border-gray-300"
+            className="md:col-span-2 col-span-4  w-auto shadow-2xl border-1 border-gray-300"
             classNames={{
               inputWrapper: [
                 "bg-white",
@@ -47,7 +46,7 @@ export default function IptalGuncelleme() {
           />
           <Input
             placeholder="Soyadınızı yazınız"
-            className="md:col-span-2 col-span-4 md:w-[650px] w-auto shadow-2xl border-1 border-gray-300"
+            className="md:col-span-2 col-span-4 w-auto shadow-2xl border-1 border-gray-300"
             classNames={{
               inputWrapper: [
                 "bg-white",
@@ -66,7 +65,7 @@ export default function IptalGuncelleme() {
         </div>
       </div>
       <Breadcumbs routes={list} />
-      <Kvkk />
+      {/* <Kvkk /> */}
     </div>
   );
 }

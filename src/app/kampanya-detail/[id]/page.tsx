@@ -42,7 +42,6 @@ export default function KampanyaDetail({params}:any) {
   // };
   return (
     <div>
-      <Header />
       <CampaignSlider click={click} setclick={setclick} />
 
       <div className="grid grid-cols-3 w-full h-auto my-2 xl:px-36">
@@ -79,7 +78,6 @@ export default function KampanyaDetail({params}:any) {
         </div>
       </div>
       <Kvkk />
-      <Footer />
     </div>
    
   );

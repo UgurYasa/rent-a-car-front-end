@@ -15,7 +15,6 @@ export default function Payment({ params }: any) {
   const router = useRouter();
   return (
     <div className="flex flex-col bg-slate-200">
-      <Header />
       <div className="bg-orange-500 w-full h-28 justify-center flex flex-col items-center py-24 gap-4">
         <h1 className="text-3xl text-white font-bold">Ödeme</h1>
       </div>
@@ -24,7 +23,7 @@ export default function Payment({ params }: any) {
         <p className="text-lg text-slate-500 w-4/5">{car && car.title}</p>
         <img src={car && car.image} alt="logo" className="w-4/5 self-center" />
       </div>
-      <div className="flex md:flex-row items-center justify-around gap-1 border[1px]">
+      <div className="flex md:flex-row flex-col max-md:w-4/5 max-md:p-4 md:items-center items-start justify-around gap-1 border[1px] self-center">
         <p className="font-bold text-lg">
           Kiralanacak Gün Sayısı : <span>{day}</span>
         </p>
@@ -62,7 +61,7 @@ export default function Payment({ params }: any) {
       </div>
       <div className="flex p-5 w-4/5 self-center justify-end">
         <Button
-          className="px-4 py-1 border-2 border-slate-500 w-40 rounded-xl text-center my-4"
+          className="px-4 py-1 border-2 border-slate-500 w-40 rounded-xl text-center md:my-4 my-2 max-md:w-full"
           onClick={() => {
             alert("Ödeme Başarılı");
             router.push("/");
@@ -71,7 +70,6 @@ export default function Payment({ params }: any) {
           Ödeme Yap
         </Button>
       </div>
-      <Footer />
     </div>
   );
 }
