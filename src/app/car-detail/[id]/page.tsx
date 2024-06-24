@@ -17,15 +17,14 @@ export default function CarDetail({ params }: any) {
         <h1 className="text-3xl text-white font-bold">{car && car.subtitle}</h1>
         <h2 className="text-lg text-white font-bold">{car && car.title}</h2>
       </div>
-      <div className="flex flex-col items-center justify-center p-2 w-4/5 self-center">
+      <div className="flex flex-col items-center justify-center p-2 md:w-4/5 w-full max-md:px-4 self-center">
         <img
           src={car && car.image}
           alt="logo"
-          width={500}
           height={500}
           className="border-2 border-slate-500 w-full object-fill"
         />
-        <p className="w-full md:p-5 max-md:line-clamp-6">
+        <p className="w-full md:p-5 max-sm:line-clamp-6">
           {car && car.description}
         </p>
         <div className="flex md:flex-row flex-col items-start justify-between md:w-2/3 w-full bg-slate-100 border-2 p-2 self-center max-md:gap-5">
@@ -42,7 +41,7 @@ export default function CarDetail({ params }: any) {
                 ))}
             </ul>
           </div>
-          <div className="pl-4">
+          <div className="md:pl-4">
             <h2 className=" flex items-center font-bold mb-4">
               Kiralama Koşulları:
             </h2>

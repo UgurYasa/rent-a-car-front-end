@@ -40,7 +40,7 @@ export default function RentalScreen({
         <h1 className="font-bold text-2xl border-b-2 w-full p-3">
           Araç Kirala
         </h1>
-        <div className="flex flex-col w-4/5 my-5">
+        <div className="flex flex-col md:w-4/5 w-full max-md:px-3 my-5">
           <p>Kiralama Tarihi</p>
           <input
             type="date"
@@ -49,7 +49,7 @@ export default function RentalScreen({
             onChange={handleKiralamaChange}
           />
         </div>
-        <div className="flex flex-col w-4/5">
+        <div className="flex flex-col md:w-4/5 w-full max-md:px-3">
           <p>Teslim Tarihi</p>
           <input
             type="date"
