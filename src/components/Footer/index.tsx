@@ -1,83 +1,81 @@
-import { FacebookIcon } from "@/assets/icons/facebook";
-import { InstagramIcon } from "@/assets/icons/instagram";
-import { LinkedinIcon } from "@/assets/icons/linkedin";
-import { LocationIcon } from "@/assets/icons/location";
-import { MessageIcon } from "@/assets/icons/message";
-import { PhoneIcon } from "@/assets/icons/phone";
-import { TwitterIcon } from "@/assets/icons/twitter";
-
 import React from "react";
-
 import Image from "next/image";
+import Link from "next/link";
+import { Contact, Icons, Links, Page } from "@/constants/footer";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <section className="bg-[#00285f] px-4  py-8 md:py-20  min-h-[40vh] text-white ">
+    <section className="bg-[#00285f] px-4  py-8 lg:py-20  min-h-[40vh] text-white ">
       <div className="container flex flex-col items-center gap-5 justify-center">
-        <div className="flex md:flex-row flex-col w-full gap-4 md:gap-10">
-          <div className="flex flex-col w-full md:w-1/2 gap-4 md:gap-10 md:items-start">
-            <Image
-              src="/assets/logo.png"
-              alt="logo"
-              width={250}
-              height={140}
-              className="w-full"
-            />
-            <p className="text-xs md:text-sm">
-              Lorem ipsum dolor sit amet consectetur. Urna nibh sem risus nec
-              interdum habitant Porttitor augue enim.
+        <div className="flex lg:flex-row flex-col w-full gap-4 lg:gap-10 container">
+          <div className="flex flex-col w-full md:w-1/2 gap-4 lg:gap-10 lg:items-start">
+            <Link href="/">
+              <Image
+                src="/assets/logo.png"
+                alt="logo"
+                width={250}
+                height={140}
+                className="w-full"
+              />
+            </Link>
+            <p className="text-xs lg:text-sm">
+              Kaliteli araç kiralama deneyimi için en doğru adres: Qualizto Rent
+              a Car.
             </p>
-            <div className="flex flex-row justify-around md:justify-normal gap-2">
-              <FacebookIcon />
-              <LinkedinIcon />
-              <TwitterIcon />
-              <InstagramIcon />
+            <div className="flex flex-row justify-around lg:justify-normal gap-2">
+              {Icons.map((icon) => (
+                <Link href={icon.href} target="_blank" key={icon.id}>
+                  {icon.icon}
+                </Link>
+              ))}
             </div>
           </div>
           <div className="flex flex-col w-1/3 text-start gap-2">
-            <h1 className="font-bold text-xl md:text-2xl mt-2">Sayfa</h1>
-            <p className="text-xs md:text-sm">Rezervasyonları Yönet</p>
-            <p className="text-xs md:text-sm">Araçlar</p>
-            <p className="text-xs md:text-sm">Kampanyalar</p>
-            <p className="text-xs md:text-sm">Ofisler</p>
-            <p className="text-xs md:text-sm">Hizmetler</p>
-            <p className="text-xs md:text-sm">Ürünler ve Güvenceler</p>
+            <h1 className="font-bold text-xl lg:text-2xl mt-2">{Page.title}</h1>
+            {Page.pages.map((page) => (
+              <Link href={page.href} key={page.id}>
+                <p className="text-xs md:text-sm">{page.title}</p>
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col w-1/3 text-start gap-2">
-            <h1 className="font-bold text-xl md:text-2xl mt-2">Linkler</h1>
-            <p className="text-xs md:text-sm">Kullanım Koşulları</p>
-            <p className="text-xs md:text-sm">Gizlilik Politikası</p>
-            <p className="text-xs md:text-sm">KVKK</p>
+            <h1 className="font-bold text-xl lg:text-2xl mt-2">
+              {Links.title}
+            </h1>
+            {Links.links.map((link) => (
+              <Link href={link.href} key={link.id}>
+                <p className="text-xs md:text-sm">{link.title}</p>
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col w-full sm:w-1/3 text-start gap-2">
-            <h1 className="font-bold text-xl md:text-2xl mt-2">Bize Ulaşın</h1>
-            <div className="flex flex-row items-center gap-2">
-              <PhoneIcon />
-              <p className="text-xs md:text-sm">+90 522 222 22 22</p>
-            </div>
-            <div className="flex flex-row items-center gap-2">
-              <MessageIcon />
-              <p className="text-xs md:text-sm">info@trakya.qualizto.com</p>
-            </div>
-            <div className="flex flex-row items-center gap-2">
-              <LocationIcon />
-              <p className="text-xs md:text-sm">Edirne</p>
-            </div>
+            <h1 className="font-bold text-xl lg:text-2xl mt-2">
+              {Contact.title}
+            </h1>
+            {Contact.infos.map((info) => (
+              <div className="flex flex-row items-center gap-2" key={info.id}>
+                {info.icon}
+                <p className="text-xs lg:text-sm">{info.text}</p>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-col md:w-1/2 w-full text-start gap-2 ">
-            <h1 className="font-bold text-xl md:text-2xl mt-2">Kariyer</h1>
-            <p className="text-xs md:text-sm">
-              Lorem ipsum dolor sit amet consectetur. Urna nibh sem risus nec
-              interdum.
+          <div className="flex flex-col lg:w-1/2 w-full text-start gap-2 ">
+            <h1 className="font-bold text-xl lg:text-2xl mt-2">Kariyer</h1>
+            <p className="text-xs lg:text-sm">
+              Herhangi bir aksilik durumunda yardım almak için lütfen aşağıdaki
+              &#8243;Bize Ulaşın&#8243; butonuna tıklayın. Size en kısa sürede geri dönüş
+              yapacağız.
             </p>
-            <button className="w-full bg-[#D9D9D9] text-[#002B64] text-md font-bold rounded-2xl py-1 px-1">
-              Bize Ulaşın
-            </button>
+            <Link href="/iletisim">
+              <button className="w-full bg-[#D9D9D9] text-[#002B64] text-lg font-bold rounded-2xl py-1 px-1">
+                Bize Ulaşın
+              </button>
+            </Link>
           </div>
         </div>
         <div className="border-b-[1px] border-white w-full my-4"></div>
-        <p className="text-xs md:text-sm font-light">
+        <p className="text-xs lg:text-sm font-light">
           Copyright @<span>{year}</span>. Qualizto All Right Reserved
         </p>
       </div>
