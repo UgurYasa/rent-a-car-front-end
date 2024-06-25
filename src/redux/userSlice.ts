@@ -21,7 +21,7 @@ const initialState = {
   selected: "login",
 };
 
-const userSlice = createSlice({
+const userSlice:any = createSlice({
   name: "user",
   initialState,
   reducers: {

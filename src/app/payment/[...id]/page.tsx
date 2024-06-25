@@ -1,11 +1,9 @@
 "use client";
-import CarCard from "@/components/CarCard";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { rentalCarFeatures } from "@/constants/cars";
-import { Button } from "@nextui-org/react";
+import { Button, card } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { parse } from "path";
+import React, { useEffect } from "react";
 
 export default function Payment({ params }: any) {
   const id = params.id[0];
@@ -13,6 +11,64 @@ export default function Payment({ params }: any) {
   const amount = params.id[2];
   const car = rentalCarFeatures.find((car) => car.id == id);
   const router = useRouter();
+
+  const [name, setName] = React.useState("");
+  const [cardNumber, setCardNumber] = React.useState("");
+  const [expirationDate, setExpirationDate] = React.useState("");
+  const [cvv, setCvv] = React.useState("");
+
+  useEffect(() => {
+    if (
+      cardNumber.length === 4 ||
+      cardNumber.length === 9 ||
+      cardNumber.length === 14
+    ) {
+      setCardNumber(cardNumber + "-");
+    }
+  }, [cardNumber]);
+
+  useEffect(() => {
+    if (expirationDate.length === 2 && parseInt(expirationDate) >= 12) {
+      setExpirationDate(expirationDate + "/");
+    } else if (parseInt(expirationDate) > 12) {
+      alert("Geçerli bir tarih giriniz.");
+    }
+    const date = expirationDate.split("/");
+    if (parseInt(date[0]) > 12 || parseInt(date[1]) >31){
+      alert("Geçerli bir tarih giriniz.");
+    }
+  }, [expirationDate]);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length <= 19) {
+      setCardNumber(e.target.value);
+    } else {
+      alert("Kart numarası 16 haneli olmalıdır.");
+    }
+  };
+
+  const handleExpirationDateChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (e.target.value.length <= 5) {
+      setExpirationDate(e.target.value);
+    } else {
+      alert("Geçerli bir tarih giriniz.");
+    }
+  };
+
+  const handleCvvChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length <= 3) {
+      setCvv(e.target.value);
+    } else {
+      alert("CVV 3 haneli olmalıdır.");
+    }
+  };
+
   return (
     <div className="flex flex-col bg-slate-200">
       <div className="bg-orange-500 w-full h-28 justify-center flex flex-col items-center py-24 gap-4">
@@ -38,6 +94,8 @@ export default function Payment({ params }: any) {
             type="text"
             placeholder="Ad Soyad"
             className="border-[1px] p-2"
+            onChange={(event) => handleNameChange(event)}
+            value={name}
           />
           <p>Kredi kartı üzerinde yazan ad soyad</p>
         </div>
@@ -47,15 +105,29 @@ export default function Payment({ params }: any) {
             type="text"
             placeholder="XXXX-XXXX-XXXX-XXXX"
             className="border-[1px] p-2"
+            onChange={(event) => handleCardNumberChange(event)}
+            value={cardNumber}
           />
         </div>
         <div className="flex flex-col w-4/5">
           <p className="font-bold text-lg">Son Kullanma Tarihi</p>
-          <input type="text" placeholder="AA/YY" className="border-[1px] p-2" />
+          <input
+            type="text"
+            placeholder="AA/YY"
+            className="border-[1px] p-2"
+            onChange={(event) => handleExpirationDateChange(event)}
+            value={expirationDate}
+          />
         </div>
         <div className="flex flex-col w-4/5">
           <p className="font-bold text-lg">CVV</p>
-          <input type="password" placeholder="***" className="border-[1px] p-2"/>
+          <input
+            type="password"
+            placeholder="***"
+            className="border-[1px] p-2"
+            onChange={(event) => handleCvvChange(event)}
+            value={cvv}
+          />
           <p>Kartın arkasındaki kod</p>
         </div>
       </div>

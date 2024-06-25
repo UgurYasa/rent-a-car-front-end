@@ -8,11 +8,14 @@ import { useRouter } from "next/navigation";
 import MenuItems from "./MenuItems";
 import { Image } from "@nextui-org/react";
 import { menu } from "@/constants/header";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsMenuOpen } from "@/redux/menu";
 export default function Header() {
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
-
+  const {isMenuOpen} = useSelector((state: any) => state.menu);
+  const dispatch = useDispatch();
   return (
     <header className="sticky top-0 z-40 w-full bg-[#00285f] py-5">
       <div className="container flex w-full items-center justify-between">
@@ -34,7 +37,7 @@ export default function Header() {
             className={`fill-white  rounded-full border-2 border-slate-400 p-2 text-5xl  ${
               isMenuOpen ? "block" : "xl:hidden block"
             }`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => dispatch(setIsMenuOpen(!isMenuOpen))}
           />
           {menu && (
             <ul
@@ -49,7 +52,7 @@ export default function Header() {
                 className={`self-start pr-10 ${
                   isMenuOpen ? "block" : "hidden"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() =>dispatch(setIsMenuOpen(!isMenuOpen))}
               >
                 <Image
                   alt="Logo"

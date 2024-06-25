@@ -5,6 +5,8 @@ import Dropdown from "../Dropdown";
 import { MENU_TREE_ITEM } from "@/types/menu";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setIsMenuOpen } from "@/redux/menu";
 
 const MenuItems = ({
   items,
@@ -19,7 +21,7 @@ const MenuItems = ({
 }) => {
   const router = useRouter();
   const [dropdown, setDropdown] = useState(false);
-
+  const dispatch = useDispatch();
   return (
     <li
       className="relative text-base 2xl:text-base"
@@ -40,7 +42,9 @@ const MenuItems = ({
           onClick={(e) => {
             e.preventDefault();
             if (!items.url || items.url === "#") return;
+
             router.push(items.url);
+            dispatch(setIsMenuOpen(false));
           }}
         >
           {icon && (
