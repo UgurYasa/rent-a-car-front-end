@@ -9,13 +9,13 @@ export default function CarCard({ classNames, car }: any) {
     <div
       className={`w-full h-full border-2 gap-10 flex flex-col shadow-lg p-6 ${classNames}`}
     >
-      <div className="flex lg:flex-row flex-col justify-between">
-        <div>
+      <div className="flex md:flex-row flex-col justify-between items-center">
+        <div className="flex md:flex-col flex-row  max-md:justify-between max-md:w-full max-md:container">
           <h1 className="text-orange-500">{car.subtitle}</h1>
           <p className="text-xl font-bold">{car.title}</p>
         </div>
           <Button
-            className="md:col-span-1 col-span-3 bg-orange-600 rounded-full text-white p-4"
+            className="md:col-span-1 col-span-3 bg-orange-600 rounded-full text-white p-4 max-md:w-full"
             onClick={() => {
               router.push(`/car-detail/${car.id}`);
             }}

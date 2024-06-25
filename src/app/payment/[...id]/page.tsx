@@ -23,7 +23,7 @@ export default function Payment({ params }: any) {
         <p className="text-lg text-slate-500 w-4/5">{car && car.title}</p>
         <img src={car && car.image} alt="logo" className="w-4/5 self-center" />
       </div>
-      <div className="flex md:flex-row flex-col max-md:w-4/5 max-md:p-4 md:items-center items-start justify-around gap-1 border[1px] self-center">
+      <div className="flex md:flex-row flex-col max-md:w-4/5 max-md:p-4 md:items-center items-start justify-between md:p-2 gap-1 border[1px] self-center w-4/5">
         <p className="font-bold text-lg">
           Kiralanacak Gün Sayısı : <span>{day}</span>
         </p>
@@ -55,7 +55,7 @@ export default function Payment({ params }: any) {
         </div>
         <div className="flex flex-col w-4/5">
           <p className="font-bold text-lg">CVV</p>
-          <input type="text" placeholder="***" className="border-[1px] p-2" />
+          <input type="password" placeholder="***" className="border-[1px] p-2"/>
           <p>Kartın arkasındaki kod</p>
         </div>
       </div>

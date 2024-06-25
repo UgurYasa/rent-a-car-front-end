@@ -10,6 +10,13 @@ import Footer from "@/components/Footer";
 export default function Araclar({ params }: any) {
   var router = useRouter();
   const path = params.id ? params.id[0] : "kiralik-araclar";
+  const shuffle=(a:any)=> {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
   const route =
     path === "kiralik-araclar"
       ? rentalCarTitles[0]
@@ -56,7 +63,7 @@ export default function Araclar({ params }: any) {
 
   const rentalCars =
     path === "kiralik-araclar"
-      ? rentalCarFeatures
+      ?shuffle(rentalCarFeatures)
       : rentalCarFeatures.filter((car) => car.subtitle === route);
 
   return (
@@ -109,7 +116,7 @@ export default function Araclar({ params }: any) {
             </tr>
           </thead>
         </table>
-        <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-5 md:mb-24 gap-8">
+        <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 mt-5 md:mb-24 gap-8">
           {rentalCars.length > 0 ? (
             rentalCars.map((car: any, index: any) => (
               <CarCard car={car} index={index} key={index} />

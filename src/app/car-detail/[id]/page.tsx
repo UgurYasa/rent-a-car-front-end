@@ -27,7 +27,7 @@ export default function CarDetail({ params }: any) {
         <p className="w-full md:p-5 max-sm:line-clamp-6">
           {car && car.description}
         </p>
-        <div className="flex md:flex-row flex-col items-start justify-between md:w-2/3 w-full bg-slate-100 border-2 p-2 self-center max-md:gap-5">
+        <div className="flex md:flex-row flex-col items-start justify-between w-full bg-slate-100 border-2 p-2 self-center max-md:gap-5">
           <div className="pr-4">
             <h2 className="flex items-center mb-4 font-bold ">
               Araç Özellikleri:
