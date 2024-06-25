@@ -20,9 +20,9 @@ export const Page = {
 export const Links = {
   title: "Linkler",
   links: [
-    { title: "Kullanım koşulları", href: "/kullanım-kosullari", id: 1 },
-    { title: "Gizlilik Politikası", href: "/gizlilik-politikasi", id: 2 },
-    { title: "KVKK", href: "/kvkk", id: 3 },
+    { title: "Kullanım koşulları", href: "/link/kullanim-kosullari", id: 1 },
+    { title: "Gizlilik Politikası", href: "/link/gizlilik-politikasi", id: 2 },
+    { title: "KVKK", href: "/link/kvkk", id: 3 },
   ],
 };
 
