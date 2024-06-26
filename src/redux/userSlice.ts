@@ -3,7 +3,7 @@ import { log } from "console";
 
 const initialState = {
   users: {
-    email: "u.yasa2001@gmail.com",
+    email: "qualizto@gmail.com",
     password: "1234",
   },
   formRegister: {
