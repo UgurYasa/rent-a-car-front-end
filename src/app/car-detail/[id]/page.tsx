@@ -1,14 +1,12 @@
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import React, { useState } from "react";
 import { rentalCarFeatures } from "@/constants/cars";
 import { Button } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
 import RentalScreen from "@/components/RentalScreen";
 
 export default function CarDetail({ params }: any) {
-  const id = params.id[0];
+  const id = params.id;
+
   const car = rentalCarFeatures.find((car) => car.id == id);
   const [clicked, setClicked] = useState(false);
   return (
@@ -64,7 +62,7 @@ export default function CarDetail({ params }: any) {
           Hemen Kirala
         </Button>
       </div>
-      {clicked && <RentalScreen setclicked={setClicked} id={car&&car.id} />}
+      {clicked && <RentalScreen setclicked={setClicked} id={car && car.id} />}
     </div>
   );
 }
